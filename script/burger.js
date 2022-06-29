@@ -11,7 +11,7 @@
 
     }else {
         baseElement.style.display = 'none';
-        buttonTarget.style.display = 'flex';
+        buttonTarget.style.display = 'grid';
         buttonOff.style.display = 'none';
     }
 
