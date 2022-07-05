@@ -4,6 +4,10 @@ export default class CardsList {
     this.data=data;
     this.render();
     this.renderCards();
+    let anotherObj = {
+      move: function() {
+      }
+    };
 
   }
   getTemplate(){
@@ -23,6 +27,7 @@ export default class CardsList {
   renderCards(){
     const cards=this.data.map(item => {
       const card = new Card(item);
+
       return card.componentElement;
 
     });

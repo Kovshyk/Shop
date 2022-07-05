@@ -15,7 +15,7 @@
   <div class="main">
     <div class="header">
       <h1>Online Store</h1>
-        <button class="cart-button"><i class="bi bi-cart"></i> CART</button>
+        <button class="cart-button"><i class="bi bi-cart"></i> CART <span class="counter"></span></button>
 
     </div>
     <div class="content">
@@ -40,21 +40,21 @@
             <h2>Category</h2>
             <div>
               <ul>
-                <li><input type="checkbox" id="monitors" name="monitors">
+                <li><input class="category-checkbox" type="checkbox" id="monitors" name="monitors">
                   <label for="monitors">Monitors</label></li>
-                <li><input type="checkbox" id="laptops"  name="laptops">
+                <li><input class="category-checkbox" type="checkbox" id="laptops"  name="laptops">
                   <label for="laptops">Laptops</label></li>
-                <li><input type="checkbox" id="video-cards" name="video-cards">
-                  <label for="video-cards">Video cards</label></li>
-                <li><input type="checkbox" id="gaming-keyboards"  name="gaming-keyboards">
-                  <label for="gaming-keyboards">Gaming keyboards</label></li>
-                <li><input type="checkbox" id="computer-mouse" name="computer mouse">
-                  <label for="computer-mouse">Scales</label></li>
-                <li><input type="checkbox" id="ssd" name="ssd">
+                <li><input class="category-checkbox" type="checkbox" id="video_cards" name="video-cards">
+                  <label for="video_cards">Video cards</label></li>
+                <li><input class="category-checkbox" type="checkbox" id="gaming_keyboards"  name="gaming-keyboards">
+                  <label for="gaming_keyboards">Gaming keyboards</label></li>
+                <li><input class="category-checkbox" type="checkbox" id="computer_mouse" name="computer mouse">
+                  <label for="computer_mouse">Scales</label></li>
+                <li><input class="category-checkbox" type="checkbox" id="ssd" name="ssd">
                   <label for="ssd">SSD</label></li>
-                <li><input type="checkbox" id="sound-cards"  name="sound-cards">
-                  <label for="sound-cards">Sound cards</label></li>
-                <li><input type="checkbox" id="ram" name="ram">
+                <li><input class="category-checkbox" type="checkbox" id="sound_cards"  name="sound-cards">
+                  <label for="sound_cards">Sound cards</label></li>
+                <li><input class="category-checkbox" type="checkbox" id="ram" name="ram">
                   <label for="ram">RAM</label></li>
               </ul>
             </div>
@@ -62,6 +62,7 @@
           <hr>
           <div class="brand-filters filters">
             <h2>Brand</h2>
+
           </div>
           <hr>
           <div class="rating-slider">
@@ -86,9 +87,19 @@
 <script type="module" src="script/burger.js"></script>
 <script type="module">
     import OnlineStorePage from './script/index.js'
+    import Filter from './script/filter.js'
     const page=new OnlineStorePage();
     const someElement = document.querySelector('.products');
     someElement.append(page.element);
+    const url='https://online-store.bootcamp.place/api/brands';
+
+    fetch(url)
+        .then(response=>response.json())
+        .then(brands=> {
+            const filtersLabel = new Filter(brands);
+            const filtersLabelPosition=document.querySelector('.brand-filters');
+            filtersLabelPosition.append(filtersLabel.element);})
+
 </script>
 </body>
 </html>

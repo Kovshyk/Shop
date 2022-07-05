@@ -3,6 +3,10 @@ export default class Card {
     this.state=someProduct;
     this.myRender();
 
+
+ // console.log(this.button)
+
+
   }
   HTMLForm(){
     return `
@@ -14,9 +18,11 @@ export default class Card {
   </div>
   <p>${this.state.title}</p>
   <p>${this.state.category}</p>
-  <button>ADD TO CART</button>
+  <button class="button-add-to-cart" data-element="button-add-to-cart">ADD TO CART</button>
   </div>`
   }
+
+
   update(data={}){
     this.state=data;
     this.componentElement.innerHTML=this.HTMLForm();

@@ -4,8 +4,6 @@ export default class Pagination {
     this.totalPages=totalPages;
     this.activePageIndex=activePageIndex;
     this.render();
-
-    console.log(this.activePageIndex)
     this.addEventListeners();
   }
 getPages(){
@@ -25,7 +23,7 @@ getPages(){
 
 }
 getPageTemplate(pageIndex=0){
-  console.log(this.activePageIndex)
+
     const isActive = pageIndex === this.activePageIndex ? 'active' : '';
 
     return `<li class="pagination-element ${isActive}" data-element="pagination" data-page-index="${pageIndex}">${pageIndex+1}</li>`
@@ -52,7 +50,7 @@ nextPage (){
 prevPage(){
   const prevSetIndex=this.activePageIndex-1;
   this.setPage(prevSetIndex);
-  console.log(this.setPage(prevSetIndex))
+
 
 }
   render(){
